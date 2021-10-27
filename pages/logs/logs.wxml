@@ -4,6 +4,4 @@
     <text class="log-item">{{index + 1}}. {{log.date}}</text>
   </block>
 </view>
-<view class="" hover-class="none" hover-stop-propagation="false">
-  
-</view>
+
