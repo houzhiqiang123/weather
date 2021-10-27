@@ -1,0 +1,20 @@
+<!-- 更改标题 -->
+<page-meta>
+    <navigation-bar title="{{city}}-天气详情"></navigation-bar>
+</page-meta>
+<view class="detail">
+    <view class="d_item d_row">
+        <view class="d_icon"><image class="d_img_big" src="../../images/icon/{{obj.icon}}.png" wx:if="{{obj != null}}"/></view>
+        <view class="d_title">{{obj.text}} <rich-text nodes="{{obj.temp}}" /></view>
+    </view>
+
+    <block wx:for="{{obj.details}}" wx:key="id">
+        <view class="d_item">
+            <view class="d_icon"><image class="d_img" src="../../images/icon/{{item.icon}}.png" /></view>
+            <view class="d_text">{{item.text}}</view>
+            <view class="d_detail">{{item.content}}</view>
+        </view>
+    </block>
+    
+    
+</view>

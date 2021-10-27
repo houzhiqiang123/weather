@@ -1,0 +1,36 @@
+page {
+    font-size: 90%;
+}
+.detail {
+    background-color: white;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 1rpx 1rpx 5rpx #e6e8ff;
+}
+.d_item {
+    width: 50%;
+    padding: 20rpx;
+    text-align: center;
+    border: 1px solid #e6e8ff;
+}
+.d_row {
+    width: 100%;
+}
+.d_title {
+    font-size: 120%;
+    display: flex;
+    justify-content: center;
+}
+rich-text {
+    margin-left: 10rpx;
+    margin-top: 2rpx;
+}
+.d_img{
+    width: 60rpx;
+    height: 60rpx;
+}
+.d_img_big {
+    width: 120rpx;
+    height: 120rpx;
+}

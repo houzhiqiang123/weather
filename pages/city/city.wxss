@@ -1,0 +1,66 @@
+
+page {
+    font-size: 90%;
+}
+
+
+.location, .top {
+    margin-top: 40rpx;
+}
+/* 城市输入框 */
+.city {
+    background-color: #eee;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    color: #666;
+}
+.input {
+    position: relative;
+}
+.clear {
+    position: absolute;
+    top: 23rpx;
+    right: 15rpx;
+    z-index: 9999;
+}
+
+/* 城市 */
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;         /*区间排序、发散排序*/
+}
+.list:after {
+    content: '';
+    width: 32%;
+}
+.item {
+    background-color: #eee;
+    border-radius: 20rpx;
+    text-align: center;
+    color: #555;
+    width: 32%;
+    margin: 20rpx 0;
+    padding: 10rpx 0;
+}
+.l_item {
+    display: flex;
+    align-items: center;
+}
+.l_img {
+    width: 35rpx;
+    height: 35rpx;
+    margin-left: 20rpx;
+    margin-right: 5rpx;
+}
+
+
+/* 搜索的城市 */
+.search {
+    padding-left: 15rpx;
+}
+.s_item {
+    color: #666;
+    padding: 15rpx 0;
+    border-bottom: 1rpx solid #eee;
+}

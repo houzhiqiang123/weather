@@ -1,0 +1,58 @@
+<!-- 更改标题 -->
+<page-meta>
+    <navigation-bar title="选择城市"></navigation-bar>
+</page-meta>
+
+<!-- 城市地理输入框 -->
+<view class="input">
+    <input type="text" class="city" placeholder="请输入城市关键字" value="{{inputCity}}" bindinput="inputCity" />
+    <icon class="clear" type="clear" style="display:{{iconState}};" bindtap="clearCity" />
+</view>
+
+<!-- 搜索的城市列表 -->
+<view class="search">
+    <block wx:for="{{cityList}}" wx:key="id">
+        <view class="s_item"
+                bindtap="sendLocation"
+                data-city="{{item.adm2}},{{item.name}}"
+                data-location="{{item.lon}},{{item.lat}}"
+                data-id="{{item.id}}">{{item.adm2}},{{item.name}}</view>
+    </block>
+</view>
+<!-- 我的城市 -->
+<view class="location" style="display:{{uiState}};">
+    <view class="title">我的城市：</view>
+    <view class="list">
+        <view class="item l_item" 
+        bindtap="sendLocation" 
+        data-id="{{item.id}}"><image class="l_img" src="../../images/location.svg" />{{city}}</view>
+        <block wx:for="{{historyCity}}" wx:key="id">
+            <view class="item"
+            bindtap="sendLocation"
+            data-city="{{item.city}}"
+            data-location="{{item.location}}"
+            data-id="{{item.id}}">{{item.city}}</view>
+        </block>
+    </view>
+</view>
+
+<!-- 热门城市 -->
+<view class="top" style="display:{{uiState}};">
+    <view class="title">热门城市：</view>
+    <view class="list">
+        <block wx:for="{{topList}}" wx:key="id">
+            <view class="item" 
+                wx:if="{{item.adm2 === item.name}}"
+                bindtap="sendLocation" 
+                data-city="{{item.adm2}}" 
+                data-location="{{item.lon}},{{item.lat}}"
+                data-id="{{item.id}}">{{item.adm2}}</view>
+            <view class="item" 
+                bindtap="sendLocation" 
+                data-city="{{item.adm2}},{{item.name}}" 
+                data-location="{{item.lon}},{{item.lat}}"
+                data-id="{{item.id}}"
+                wx:else>{{item.adm2}}，{{item.name}}</view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,64 @@
+<!-- index.wxml -->
+<image class="c_bg" src="../../images/weather_bg.png" mode="aspectFill" />
+<view class="container">
+	<!-- 地理位置 -->
+	<view class="location">
+		<navigator class="l_link" url="/pages/city/city" hover-class="none">
+			<image class="l_img" src="../../images/location_white.svg" />
+			{{city}} +
+		</navigator>
+	</view>
+
+	<!-- 天气实况 -->
+	<view class="weather">
+		<navigator url="/pages/detail/detail?location={{location}}&city={{city}}" hover-class="none" >
+			<view class="w_temp">
+				<rich-text nodes="{{weather.now.temp}}" />
+			</view>
+			<view class="w_state">
+				{{weather.now.text}}<image class="w_img" src="../../images/icon_3d/{{weather.now.icon}}.png" wx:if="{{weather !== null}}"/>
+				<text class="w_pm25" style="background-color:{{air.now.bgcolor}};">{{air.now.aqi}} {{air.now.category}}</text>
+			</view>
+			<view class="w_state">
+				{{weather.now.windDir}} {{weather.now.windScale}}级 湿度{{weather.now.humidity}}%
+			</view>
+			</navigator>
+	</view>
+</view>
+
+<view class="details">
+	<!-- 逐时预报 -->
+	<scroll-view class="hour" scroll-x="{{true}}">
+		<block wx:for="{{hour.hourly}}" wx:key="fxTime">
+			<view class="h_item">
+			<view class="h_time">{{item.fxTime}}</view>
+			<view class="h_time"><image class="h_img" src="../../images/icon/{{item.icon}}.png" /></view>
+			<view class="h_temp">{{item.text}}</view>
+			<view class="h_temp"><rich-text class="" nodes="{{item.temp}}" /></view>
+		</view>
+		</block>
+	</scroll-view>
+
+	<!-- 三天预报 -->
+	<scroll-view class="three" scroll-x="{{true}}">
+		<block wx:for="{{three.daily}}" wx:key="fxDate">
+			<view class="t_item">
+				<view class="t_temp">{{item.day}}</view>
+				<view class="t_temp"><rich-text class="" nodes="{{item.temp}}" /></view>
+				<view class="t_temp">{{item.text}}</view>
+				<view class="t_temp"><image class="t_img" src="../../images/icon/{{item.iconDay}}.png" /><image class="t_img" src="../../images/icon/{{item.iconNight}}.png" wx:if="{{item.textDay !== item.textNight}}" /></view>
+			</view>
+		</block>
+	</scroll-view>
+
+	<!-- 生活指数 -->
+	<view class="live">
+		<block wx:for="{{live.daily}}" wx:key="type">
+			<view class="l_item" bindtap="showDetails" data-item="{{item}}">
+				<view class="l_icon"><image class="l_img" src="../../images/live/{{item.type}}.png" /></view>
+				<view class="l_name">{{item.name}}</view>
+				<view class="l_category">{{item.category}}</view>
+			</view>
+		</block>
+	</view>
+</view>
